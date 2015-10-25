@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+	margin-top: 20px;
+}
+#sinir{
+height:30px;
+
+width: 600px;
+display:inline-block;
+position: relative;
+} 
+#isaret{
+position: absolute;
+height:10px;
+background: indigo;
+width: 40px;
+top:-10px;
+border-radius: 5px 5px 0 0;
+}
+#isaret1{
+position: absolute;
+height:10px;
+background: indigo;
+width: 40px;
+bottom:-9px;
+border-radius:0 0 5px 5px;
+right:0;
+}
+ul li{
+	float:left;
+	padding: 6px;
+	margin-top:-16px;
+	list-style-type: none;
+	width:150px;
+	text-align: center;
+	transition:all 700ms linear;
+}
+a li:hover{
+	background: rgba()	
+}
+a{
+	color:indigo;
+	font-weight: bold;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div id="sinir">
+	<ul><a href="#"><li>Anasayfa</li></a><a href="#"><li>Ulaşım</li></a><a href="#"><li>İletişim</li></a></ul>
+<div id="isaret"></div>
+<div id="isaret1"></div>
+</div>
+
+<script>
+	$("#sinir").on("mousemove",function(event){
+	var x =event.pageX; //mouse hareketi
+	if(x < 24)    	x=24; // sınırı belli ediyor
+	if(x > 584)    	x=584;
+	$("#yaz").text(x);
+	var zaman = 400;
+	if(x > 48 && x < 210){
+    $('#isaret').stop().animate({left:"40px", width:"162px" },zaman);
+    $('#isaret1').stop().animate({right:"398px", width:"162px" },zaman);
+   	}else if(x > 210 && x < 372){
+	$('#isaret').stop().animate({left:"202px",width:"162px" },zaman);
+	$('#isaret1').stop().animate({right:"236px", width:"162px" },zaman);
+	}else if(x > 372 && x < 539){
+	$('#isaret').stop().animate({left:"364px", width:"162px" },zaman);
+	$('#isaret1').stop().animate({right:"74px", width:"162px" },zaman);
+	}else{
+	$('#isaret').stop().animate({left:"0", width:"40px" },zaman);
+	$('#isaret1').stop().animate({right:"0px", width:"40px" },zaman);
+	}	
+	});
+	$("#sinir").on("mouseout",function(){
+	$('#isaret').stop().animate({left:"0", width:"40px" },400);
+	$('#isaret1').stop().animate({right:"0px", width:"40px" },400);
+	})
+</script>
+</body>
+</html>
